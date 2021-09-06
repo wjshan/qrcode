@@ -1,8 +1,6 @@
 import typing
 
 from .base import SerializerAble
-from typing import SupportsInt, SupportsBytes, List
-import re
 
 
 class NumericSerializer(SerializerAble):
