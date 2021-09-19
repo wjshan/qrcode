@@ -13,6 +13,16 @@ class SerializerAble(object):
         self.version: Version = version
         self.raw_data: str = raw_data
 
+    @staticmethod
+    def counting_indicator_map(version_num: int)->int:
+        return 0
+
+    @property
+    def counting_indicator(self):
+        """计算字符计数指示符"""
+        counting = self.counting_indicator_map(self.version.version_num)
+        return self.bin(len(self.raw_data), counting)
+
     @property
     def flag(self) -> SupportsBytes:
         """模式指示符"""
@@ -39,3 +49,7 @@ class SerializerAble(object):
             return []
         split_size = math.ceil(len(string_data) / length)
         return (string_data[i * length:(i + 1) * length] for i in range(split_size))
+
+    @classmethod
+    def get_len(cls, version: Version, raw_data: str) -> int:
+        return 0
